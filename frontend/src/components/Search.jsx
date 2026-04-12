@@ -17,7 +17,7 @@ const Search = () => {
   const handleSearchChange = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
-
+ 
     if (query) {
       const results = song.filter((song) =>
         song.title.toLowerCase().includes(query.toLowerCase())

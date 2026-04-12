@@ -35,7 +35,7 @@ export const SongProvider = ({ children }) => {
             setSelectedSong(data[0]._id);
             setIsPlaying(false);
         } catch (error) {
-            console.log(error);
+            // console.log(error);
 
         }
     }
@@ -47,7 +47,7 @@ export const SongProvider = ({ children }) => {
             // setSelectedSong(data[0]._id);
             setIsPlaying(false);
         } catch (error) {
-            console.log(error);
+            // console.log(error);
 
         }
     }
@@ -77,7 +77,7 @@ export const SongProvider = ({ children }) => {
             const { data } = await axios.get("/api/song/single/" + selectedSong);
             setSingleSong(data);
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 
@@ -246,7 +246,7 @@ export const SongProvider = ({ children }) => {
       const generateRandomColor = () => {
         const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
         setBgColor(randomColor);
-      };
+      }; 
 
        useEffect(() => {
           const audio = audioRef.current;
