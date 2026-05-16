@@ -58,7 +58,7 @@ export const UserProvider = ({ children }) => {
         } catch (error) {
           console.error("Error fetching total users:", error);
         }
-      };
+      }; 
 
     async function loginUser(email, password, navigate, fetchSong, fetchAlbums) {
         setbtnLoading(true);
