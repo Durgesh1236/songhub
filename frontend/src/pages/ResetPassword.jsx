@@ -63,12 +63,12 @@ const ResetPassword = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post("/api/user/reset-password", {email, otp, newPassword});
-      if(data.success){
+      // if(data.success){
         toast.success(data.message);
         navigate("/login");
-      } else {
-        toast.error(data.message);
-      }
+      // } else {
+      //   toast.error(data.message);
+      // }
     } catch (error) {
       toast.error(error.message);
     }
@@ -93,7 +93,7 @@ const ResetPassword = () => {
       }
 
       {
-         isEmailSent &&
+        !isOtpSubmited && isEmailSent &&
 
         <form onSubmit={onSubmitOtp} className="bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm">
           <h1 className='text-white text-2xl font-semibold text-center mb-4'>Reset Password OTP</h1>
