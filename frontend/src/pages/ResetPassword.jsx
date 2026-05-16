@@ -37,16 +37,16 @@ const ResetPassword = () => {
     })
   }
 
-  const onSubmitEmail = async (e)=>{
+  const onSubmitEmail = async (e)=>{ 
     e.preventDefault();
     try {
       const { data } = await axios.post("/api/user/send-reset-otp", {email});
-      // if(data.success){
+      if(data.success){
         toast.success(data.message);
         setIsEmailSent(true);
-      // } else {
-      //   toast.error(data.message);
-      // }
+      } else {
+        toast.error(data.message);
+      }
     } catch (error) {
       toast.error(error.message);
     }
@@ -88,7 +88,7 @@ const ResetPassword = () => {
             <MdOutlineMailOutline className='w-4 h-4 text-white'/>
             <input onChange={(e)=>setEmail(e.target.value)} value={email} type="email" placeholder='Email id' className='bg-transparent outline-none text-white' required />
           </div>
-          <button className='w-full py-3 bg-gradient-to-r from-indigo-500 to-indigo-900 text-white rounded-full'>Submit</button>
+          <button onClick={onSubmitEmail} className='w-full py-3 bg-gradient-to-r from-indigo-500 to-indigo-900 text-white rounded-full'>Submit</button>
         </form>
       }
 
