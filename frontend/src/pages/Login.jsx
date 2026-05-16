@@ -37,7 +37,7 @@ const Login = () => {
                 {/* <RiLockPasswordLine className='w-4 h-4'/> */}
                 <input type="password" onChange={(e)=>setPassword(e.target.value)} value={password} placeholder='Password' className='auth-input' required />
             </div>
-            <p onClick={()=>navigate('/reset-password')} className='mb-4 cursor-pointer text-gray-400 hover:text-green-500'>Forgot Password?</p>
+            {/* <p onClick={()=>navigate('/reset-password')} className='mb-4 cursor-pointer text-gray-400 hover:text-green-500'>Forgot Password?</p> */}
 
             <button disabled={btnLoading} className='w-full py-3 bg-gradient-to-r from-indigo-500 to-indigo-900 text-white rounded-full'>
                 {

@@ -14,15 +14,18 @@ export const UserProvider = ({ children }) => {
     const [onlineUsers, setOnlineUsers] = useState(0);
     const [Admins, setAdmin] = useState([]);
 
-    async function registerUser(name, email, password, navigate) {
+    async function registerUser(name, email, password, navigate, fetchSong, fetchAlbums) {
         setbtnLoading(true)
         try {   
             const { data } = await axios.post("/api/user/register", { name, email, password })
-            const { otp } = await axios.post("/api/user/send-verify-otp");
+            // const { otp } = await axios.post("/api/user/send-verify-otp");
             toast.success(data.message);
             setUser(data.user);
             setbtnLoading(false);
-            navigate("/email-verify");
+            setisAuth(true);
+            navigate("/");
+            fetchSong(), 
+            fetchAlbums()
         } catch (error) {
          toast.error(error.message);
             setbtnLoading(false);
@@ -40,9 +43,7 @@ export const UserProvider = ({ children }) => {
             navigate("/");
             fetchSong();
             fetchAlbums();
-            } else {
-                navigate("/email-verify");
-            }
+            } 
         } catch (error) {
             toast.error(error.message);
             setbtnLoading(false);
@@ -69,17 +70,13 @@ export const UserProvider = ({ children }) => {
             if (data.success) {
                 setUser(data.user);
                 setbtnLoading(false);
-                if (data.user.isAccountVerified) {
+                // if (data.user.isAccountVerified) {
                     toast.success(data.message);
                     setisAuth(true);
                     navigate("/"); 
                     fetchSong();
                     fetchAlbums();
-                } else {
-                    toast.warning("Your Account is not verified!")
-                    navigate("/email-verify");
-                }
-    
+                // } 
             } else {
                 console.error(data.message);
                 toast.error(data.message)

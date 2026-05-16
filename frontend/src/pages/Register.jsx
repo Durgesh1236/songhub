@@ -10,13 +10,13 @@ const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const { fetchSong, fetchAlbums } = SongData();
+    const { fetchSong, fetchAlbums } = SongData();
     const { registerUser, btnLoading } = UserData();
     const navigate = useNavigate()
 
     const submitHandler = (e) => {
         e.preventDefault()
-        registerUser(name, email, password, navigate);
+        registerUser(name, email, password, navigate, fetchSong, fetchAlbums);
     }
 
     return (
